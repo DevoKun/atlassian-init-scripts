@@ -1,0 +1,22 @@
+
+[Unit]
+Description=Atlassian  Service
+After=
+Wants=
+Requires=
+
+[Service]
+Restart=on-failure
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+User=bitbucket
+PIDFile=/var/atlassian/application-data/bitbucket/log/bitbucket.pid
+Environment="HOME=/opt/atlassian/bitbucket"
+Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
+ExecStart=/opt/atlassian/bitbucket/bin/start-bitbucket.sh
+ExecStop=/opt/atlassian/bitbucket/bin/stop-bitbucket.sh
+
+[Install]
+WantedBy=multi-user.target

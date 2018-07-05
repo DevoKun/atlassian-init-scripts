@@ -1,0 +1,22 @@
+
+[Unit]
+Description=Atlassian  Service
+After=
+Wants=
+Requires=
+
+[Service]
+Restart=on-failure
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+User=jira
+PIDFile=/opt/atlassian/jira/work/catalina.pid
+Environment="HOME=/opt/atlassian/jira"
+Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
+ExecStart=/opt/atlassian/jira/bin/start-jira.sh
+ExecStop=/opt/atlassian/jira/bin/stop-jira.sh
+
+[Install]
+WantedBy=multi-user.target

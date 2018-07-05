@@ -1,0 +1,22 @@
+
+[Unit]
+Description=Atlassian  Service
+After=
+Wants=
+Requires=
+
+[Service]
+Restart=on-failure
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+User=bamboo
+PIDFile=
+Environment="HOME=/opt/atlassian/bamboo"
+Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
+ExecStart=/opt/atlassian/bamboo/bin/startup.sh
+ExecStop=/opt/atlassian/bamboo/bin/shutdown.sh
+
+[Install]
+WantedBy=multi-user.target

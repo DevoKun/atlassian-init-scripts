@@ -1,0 +1,22 @@
+
+[Unit]
+Description=Atlassian  Service
+After=
+Wants=
+Requires=
+
+[Service]
+Restart=on-failure
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+User=stash
+PIDFile=/var/atlassian/application-data/stash/log/stash.pid
+Environment="HOME=/opt/atlassian/stash"
+Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
+ExecStart=/opt/atlassian/stash/bin/start-stash.sh
+ExecStop=/opt/atlassian/stash/bin/stop-stash.sh
+
+[Install]
+WantedBy=multi-user.target

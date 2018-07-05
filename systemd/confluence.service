@@ -1,0 +1,22 @@
+
+[Unit]
+Description=Atlassian  Service
+After=
+Wants=
+Requires=
+
+[Service]
+Restart=on-failure
+StartLimitInterval=20
+StartLimitBurst=5
+TimeoutStartSec=0
+RestartSec=5
+User=confluence
+PIDFile=/opt/atlassian/confluence/work/catalina.pid
+Environment="HOME=/opt/atlassian/confluence"
+Environment="JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/"
+ExecStart=/opt/atlassian/confluence/bin/start-confluence.sh
+ExecStop=/opt/atlassian/confluence/bin/stop-confluence.sh
+
+[Install]
+WantedBy=multi-user.target
