@@ -15,8 +15,8 @@ Init scripts for the Atlassian suite of services
 * Then use **update-rc.d** to register the service to start at the appropriate runlevels.
 
 ```
-update-rc.d $service_name defaults
-service $service_name start
+update-rc.d jira defaults
+service     jira start
 ```
 
 ## SystemD
@@ -24,20 +24,50 @@ service $service_name start
 
 ```
 systemctl enable jira.service
-systemctl start jira.service
+systemctl start  jira.service
+systemctl status jira.service
+```
+
+
+## Migrating from SysV Init Scripts to SystemD
+* If you have used the Atlassian installer, _instead of the zip,_ or created an init script and want to migrate to SystemD, here are the steps.
+
+### Stop and disable the running service
+```
+service jira disable
+update-rc.d jira defaults
+```
+
+### Remove the old init scripts
+```
+find /etc/init/   -iname \*jira\* -delete
+find /etc/init.d/ -iname \*jira\* -delete
+```
+
+### Install the systemd service script and start the service
+* Copy the systemd service script in to /etc/systemd/system/
+```
+cp jira.service /etc/systemd/system/
+```
+
+* Start the service
+```
+systemctl enable jira.service
+systemctl start  jira.service
 systemctl status jira.service
 ```
 
 
 
-## Using the Puppet Manifest
-* **atlassianservice.pp** can be used to generate the init scripts required by the Atlassian services.
+
+## Using the Puppet Module
+* **atlassianservice** can be used to generate the init scripts required by the Atlassian services.
 
 ```
 atlassianservice { 'jira': }
 ```
 
-
+* Place the **atlassianservice** directory in to your **modules** directory to use it.
 
 
 
