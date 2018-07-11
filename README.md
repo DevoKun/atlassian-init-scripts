@@ -34,8 +34,13 @@ systemctl status jira.service
 
 ### Stop and disable the running service
 ```
-service jira disable
-update-rc.d jira defaults
+service jira stop
+
+## Ubuntu
+update-rc.d jira disable && update-rc.d jira remove
+
+## RHEL
+chkconfig jira off && chkconfig httpd --del
 ```
 
 ### Remove the old init scripts
