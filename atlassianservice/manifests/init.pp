@@ -1,6 +1,6 @@
-# == Class: atlassianservice
+# == Define: atlassianservice
 #
-# Class to manage init for the Atlassian services
+# Custom resource type to manage init for the Atlassian services
 #
 # === Parameters
 #

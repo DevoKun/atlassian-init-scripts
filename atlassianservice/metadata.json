@@ -1,0 +1,26 @@
+{
+  "name":          "atlassianservice",
+  "version":       "0.0.1",
+  "author":        "Devon Hubner",
+  "summary":       "Module for installing and managing docker",
+  "license":       "Apache-2.0",
+  "source":        "https://github.com/DevoKun/atlassian-init-scripts.git",
+  "project_page":  "https://github.com/DevoKun/atlassian-init-scripts",
+  "issues_url":    "https://github.com/DevoKun/atlassian-init-scripts/issues",
+  "dependencies":  [],
+  "data_provider": null,
+  "operatingsystem_support": [
+    { "operatingsystem": "RedHat"    },
+    { "operatingsystem": "CentOS"    },
+    { "operatingsystem": "Ubuntu"    },
+    { "operatingsystem": "Debian"    },
+    { "operatingsystem": "Gentoo"    },
+    { "operatingsystem": "Fedora"    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0"
+    }
+  ]
+}
